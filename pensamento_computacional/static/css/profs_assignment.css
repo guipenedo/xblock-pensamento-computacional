@@ -1,0 +1,23 @@
+table.profs_table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    font-size: 16px;
+    table-layout: auto;
+    word-break: normal;
+}
+
+table.profs_table th {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #c8c8c8;
+    font-size: 14px;
+    background: #eee;
+    font-weight: bold;
+}
+table.profs_table td {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #c8c8c8;
+    font-size: 14px;
+}

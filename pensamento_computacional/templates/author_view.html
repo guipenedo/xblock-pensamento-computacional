@@ -1,0 +1,57 @@
+<p>Clica em preview ou live para veres o conteúdo deste bloco.</p>
+<h2>Notas:</h2>
+<ol>
+    <li>1. Esta unidade (stats) deverá estar imediatamente a seguir à unidade com o quiz (que preferencialmente será só
+        um bloco).
+    </li>
+    <li>2. Esta unidade (das stats) deverá estar atribuída a um content group definido para a turma "professores".
+    </li>
+    <li>3. As questões do quiz deverão estar numeradas (começar com 1., 2., etc) para garantir a correta ordenação das
+        stats.
+    </li>
+</ol>
+<h2>Atribuição de turmas:</h2>
+<p>Nota: Os professores devem pertencer à turma "<b>professores</b>".</p>
+<script type="text/template" id="pensamento_comp_turmas_temp_{{ xblock_id }}">
+    <% if(Object.keys(turmas_profs).length) { %>
+        <table class="profs_table">
+            <thead>
+                <tr>
+                    <th>Professor</th>
+                    <th>Turmas</th>
+                    <th>Adicionar turma</th>
+                    <th>Remover turma</th>
+                </tr>
+            </thead>
+        <% for(let prof in turmas_profs){ %>
+        <tr data-prof_id="<%= prof %>">
+            <td>
+                <%= nomes[prof] %>
+            </td>
+            <td>
+                <%= turmas_profs[prof].join() %>
+            </td>
+            <td>
+                <select class="turma-add-select_{{ xblock_id }}">
+                    <option value="">- Seleciona -</option>
+                    <% for(let turma of turmas){
+                    if (!turmas_profs[prof].includes(turma) && turma !== "" && turma !== "professores") %>
+                    <option value="<%= turma %>"><%= turma %></option>
+                    <% } %>
+                </select>
+            </td>
+            <td>
+                <select class="turma-remove-select_{{ xblock_id }}">
+                    <option value="">- Seleciona -</option>
+                    <% for(let turma of turmas_profs[prof]){ %>
+                    <option value="<%= turma %>"><%= turma %></option>
+                    <% } %>
+                </select>
+            </td>
+        </tr>
+        <% } %>
+        </table>
+    <% } else %>
+    <p>Não há professores.</p>
+</script>
+<div id="pensamento_comp_turmas_{{ xblock_id }}">Carregando... <i class="fa fa-spin fa-spinner" aria-hidden="true"></i></div>
